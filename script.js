@@ -77,4 +77,58 @@ document.addEventListener('DOMContentLoaded', () => {
     // Console welcome message
     console.log('%c🌟 Portfolio by Bin Mnhi 🌟', 'color: #1a73e8; font-size: 20px; font-weight: bold;');
     console.log('%cBuilt with ❤️ using HTML, CSS & JavaScript', 'color: #5f6368; font-size: 12px;');
+
+    // Stats Counting Animation
+    const statsSection = document.querySelector('.stats-section');
+    const counters = document.querySelectorAll('.counters');
+    let hasAnimated = false;
+
+    // Function to animate counters
+    const animateCounters = () => {
+        if (hasAnimated) return;
+        hasAnimated = true;
+
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target'); // e.g. 115000
+            const suffix = counter.getAttribute('data-suffix');  // e.g. K
+            const prefix = counter.getAttribute('data-prefix');  // e.g. +
+
+            // Determine effective target to count to (e.g. 115 for 115K)
+            let countTo = target;
+            if (suffix === 'K' && target >= 1000) {
+                countTo = target / 1000;
+            }
+
+            let count = 0;
+            const duration = 2000; // 2 seconds
+            const increment = countTo / (duration / 20); // 60fps approx
+
+            const updateCount = () => {
+                count += increment;
+
+                if (count < countTo) {
+                    counter.innerText = `${prefix}${Math.ceil(count)}${suffix}`;
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = `${prefix}${countTo}${suffix}`;
+                }
+            };
+
+            updateCount();
+        });
+    };
+
+    // Use Intersection Observer to trigger animation when scrolled into view
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
+    }
 });

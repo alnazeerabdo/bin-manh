@@ -173,7 +173,7 @@ body {
 }
 
 .header-logo {
-    width: 50px;
+    width: 70px;
     height: auto;
     transition: transform 0.3s ease;
     animation: fadeIn 1s ease forwards 0.3s;
