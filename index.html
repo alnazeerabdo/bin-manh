@@ -1,104 +1,139 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="بن منهي - ناشط وناقد اجتماعي، مهتم بالتقنية وعالم المال والأعمال">
     <title>بن منهي | Bin Mnhi</title>
-    
+
     <!-- Tajawal Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- Language Toggle Button -->
-    <button class="lang-toggle" id="langToggle" aria-label="Toggle Language">
-        <span class="lang-text">EN</span>
-        <i class="fas fa-globe"></i>
-    </button>
+    <!-- Header with Logo and Language Toggle -->
+    <header class="site-header">
+        <img src="https://raw.githubusercontent.com/alnazeerabdo/binmnhi/main/logo.png" alt="بن منهي Logo"
+            class="header-logo">
+        <button class="lang-toggle" id="langToggle" aria-label="Toggle Language">
+            <span class="lang-text" data-ar="English" data-en="عربي">English</span>
+        </button>
+    </header>
 
     <!-- Animated Background -->
     <div class="bg-animation">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-        <div class="circle circle-3"></div>
-        <div class="circle circle-4"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
     </div>
 
     <!-- Main Container -->
     <main class="container">
-        <!-- Profile Section -->
-        <section class="profile-section">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
             <div class="profile-image-wrapper">
-                <div class="profile-ring"></div>
-                <img 
-                    src="https://raw.githubusercontent.com/alnazeerabdo/binmnhi/main/binmanhi.jpg" 
-                    alt="بن منهي" 
-                    class="profile-image"
-                >
+                <div class="profile-glow"></div>
+                <img src="https://raw.githubusercontent.com/alnazeerabdo/binmnhi/main/binmanhi.jpg" alt="بن منهي"
+                    class="profile-image">
             </div>
-            
+
             <h1 class="name" data-ar="بن منهي" data-en="Bin Mnhi">بن منهي</h1>
-            
-            <p class="about-text" data-ar="ناشط وناقد اجتماعي، مهتم بالتقنية وعالم المال والأعمال" data-en="Social activist and critic, interested in technology, finance and business">
-                ناشط وناقد اجتماعي، مهتم بالتقنية وعالم المال والأعمال
+
+            <p class="tagline" data-ar="ناشط وناقد اجتماعي" data-en="Social Activist & Critic">ناشط وناقد اجتماعي</p>
+
+            <p class="about-text" data-ar="مهتم بالتقنية وعالم المال والأعمال"
+                data-en="Interested in technology, finance and business">
+                مهتم بالتقنية وعالم المال والأعمال
             </p>
+
+            <!-- Social Icons in Hero -->
+            <div class="hero-social-links">
+                <a href="http://www.instagram.com/binmnhi" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="http://www.tiktok.com/@binmnhi" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://x.com/bin_mnhi?s=20" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    aria-label="X (Twitter)">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/binmnhi" target="_blank" rel="noopener noreferrer"
+                    class="social-btn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://snapchat.com/t/mbJOn9qs" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    aria-label="Snapchat">
+                    <i class="fab fa-snapchat-ghost"></i>
+                </a>
+                <a href="mailto:info@binmnhi.com" class="social-btn" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
         </section>
 
-        <!-- Social Links Section -->
-        <section class="social-section">
-            <a href="http://www.instagram.com/binmnhi" target="_blank" rel="noopener noreferrer" class="social-link instagram" aria-label="Instagram">
-                <div class="social-icon">
-                    <i class="fab fa-instagram"></i>
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
                 </div>
-                <span class="social-name" data-ar="انستغرام" data-en="Instagram">انستغرام</span>
-            </a>
+                <div class="stat-number" data-ar="+20K" data-en="20K+">+20K</div>
+                <div class="stat-label" data-ar="متابع" data-en="Followers">متابع</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="stat-number" data-ar="+100K" data-en="100K+">+100K</div>
+                <div class="stat-label" data-ar="إعجاب" data-en="Likes">إعجاب</div>
+            </div>
+        </section>
 
-            <a href="http://www.tiktok.com/@binmnhi" target="_blank" rel="noopener noreferrer" class="social-link tiktok" aria-label="TikTok">
-                <div class="social-icon">
-                    <i class="fab fa-tiktok"></i>
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <h2 class="section-title" data-ar="المهارات والاهتمامات" data-en="Skills & Interests">المهارات والاهتمامات
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <span data-ar="التقنية" data-en="Technology">التقنية</span>
                 </div>
-                <span class="social-name" data-ar="تيك توك" data-en="TikTok">تيك توك</span>
-            </a>
+                <div class="skill-item">
+                    <i class="fas fa-coins"></i>
+                    <span data-ar="المال" data-en="Finance">المال</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span data-ar="الأعمال" data-en="Business">الأعمال</span>
+                </div>
+            </div>
+        </section>
 
-            <a href="https://x.com/bin_mnhi?s=20" target="_blank" rel="noopener noreferrer" class="social-link twitter" aria-label="X (Twitter)">
-                <div class="social-icon">
-                    <i class="fab fa-x-twitter"></i>
-                </div>
-                <span class="social-name" data-ar="اكس" data-en="X">اكس</span>
-            </a>
-
-            <a href="https://www.linkedin.com/in/binmnhi" target="_blank" rel="noopener noreferrer" class="social-link linkedin" aria-label="LinkedIn">
-                <div class="social-icon">
-                    <i class="fab fa-linkedin-in"></i>
-                </div>
-                <span class="social-name" data-ar="لينكد إن" data-en="LinkedIn">لينكد إن</span>
-            </a>
-
-            <a href="https://snapchat.com/t/mbJOn9qs" target="_blank" rel="noopener noreferrer" class="social-link snapchat" aria-label="Snapchat">
-                <div class="social-icon">
-                    <i class="fab fa-snapchat-ghost"></i>
-                </div>
-                <span class="social-name" data-ar="سناب شات" data-en="Snapchat">سناب شات</span>
-            </a>
-
-            <a href="mailto:info@binmnhi.com" class="social-link email" aria-label="Email">
-                <div class="social-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <span class="social-name" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</span>
+        <!-- Contact CTA Section -->
+        <section class="cta-section">
+            <a href="mailto:info@binmnhi.com" class="cta-button">
+                <span data-ar="تواصل للأعمال" data-en="Get in Touch">تواصل للأعمال</span>
+                <i class="fas fa-arrow-left"></i>
             </a>
         </section>
 
         <!-- Footer -->
         <footer class="footer">
-            <p class="copyright" data-ar="© 2024 بن منهي. جميع الحقوق محفوظة" data-en="© 2024 Bin Mnhi. All rights reserved">
+            <p class="copyright" data-ar="© 2024 بن منهي. جميع الحقوق محفوظة"
+                data-en="© 2024 Bin Mnhi. All rights reserved">
                 © 2024 بن منهي. جميع الحقوق محفوظة
             </p>
         </footer>
@@ -106,4 +141,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
