@@ -1,0 +1,616 @@
+/* ========================================
+   Root Variables & Reset
+======================================== */
+:root {
+    /* Dark Gradient Theme - Inspired by dubayan.com */
+    --bg-dark: #0a0a1a;
+    --bg-gradient-start: #0d1033;
+    --bg-gradient-mid: #1a1a4e;
+    --bg-gradient-end: #0a0a1a;
+
+    /* Blues */
+    --primary-blue: #4facfe;
+    --secondary-blue: #00f2fe;
+    --accent-blue: #667eea;
+
+    /* Text Colors */
+    --text-white: #ffffff;
+    --text-light: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.6);
+
+    /* Effects */
+    --glow-blue: rgba(79, 172, 254, 0.4);
+    --glow-purple: rgba(102, 126, 234, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-dark);
+    position: relative;
+}
+
+/* ========================================
+   Animated Gradient Background
+======================================== */
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: linear-gradient(135deg,
+            var(--bg-gradient-start) 0%,
+            var(--bg-gradient-mid) 50%,
+            var(--bg-gradient-end) 100%);
+    overflow: hidden;
+}
+
+/* Animated Gradient Orbs */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: floatOrb 15s infinite ease-in-out;
+}
+
+.circle-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+    top: -150px;
+    right: -100px;
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--primary-blue) 0%, transparent 70%);
+    bottom: -100px;
+    left: -100px;
+    animation-delay: -5s;
+}
+
+.circle-3 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--secondary-blue) 0%, transparent 70%);
+    top: 40%;
+    left: 20%;
+    animation-delay: -10s;
+    opacity: 0.3;
+}
+
+.circle-4 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+    bottom: 20%;
+    right: 10%;
+    animation-delay: -7s;
+    opacity: 0.4;
+}
+
+@keyframes floatOrb {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-30px, 30px) scale(0.95);
+    }
+}
+
+/* Floating Particles */
+.bg-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(79, 172, 254, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 242, 254, 0.05) 0%, transparent 30%);
+    animation: shimmerBg 20s infinite ease-in-out;
+}
+
+@keyframes shimmerBg {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* ========================================
+   Language Toggle Button
+======================================== */
+.lang-toggle {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-white);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lang-toggle:hover {
+    background: rgba(79, 172, 254, 0.2);
+    border-color: var(--primary-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--glow-blue);
+}
+
+.lang-toggle i {
+    font-size: 16px;
+    transition: transform 0.4s ease;
+}
+
+.lang-toggle:hover i {
+    transform: rotate(180deg);
+}
+
+[dir="ltr"] .lang-toggle {
+    left: auto;
+    right: 30px;
+}
+
+/* ========================================
+   Main Container
+======================================== */
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 60px 30px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   Profile Section
+======================================== */
+.profile-section {
+    margin-bottom: 50px;
+}
+
+.profile-image-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 35px;
+}
+
+/* Animated Glow Ring */
+.profile-ring {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue), var(--secondary-blue), var(--primary-blue));
+    background-size: 300% 300%;
+    animation: rotateGradient 4s linear infinite;
+    opacity: 0.8;
+}
+
+.profile-ring::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background: var(--bg-dark);
+    border-radius: 50%;
+}
+
+@keyframes rotateGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Outer Glow Effect */
+.profile-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle, var(--glow-blue) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulseGlow 3s infinite ease-in-out;
+    z-index: -1;
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.profile-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--bg-dark);
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+
+.name {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-white);
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 40px var(--glow-blue);
+}
+
+.about-text {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    line-height: 1.9;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   Social Links Section
+======================================== */
+.social-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 25px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-white);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.social-link:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-blue);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px var(--glow-blue);
+}
+
+.social-link:hover::before {
+    opacity: 1;
+}
+
+.social-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    font-size: 1.6rem;
+    color: var(--primary-blue);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.social-link:hover .social-icon {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-white);
+    transform: scale(1.1);
+}
+
+.social-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    color: var(--text-muted);
+    transition: color 0.4s ease;
+}
+
+.social-link:hover .social-name {
+    color: var(--text-white);
+}
+
+/* Individual Social Colors */
+.social-link.instagram:hover::before {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-link.tiktok:hover::before {
+    background: linear-gradient(135deg, #25F4EE, #FE2C55);
+}
+
+.social-link.twitter:hover::before {
+    background: linear-gradient(135deg, #1a1a2e, #2d2d44);
+}
+
+.social-link.linkedin:hover::before {
+    background: linear-gradient(135deg, #0077b5, #00a0dc);
+}
+
+.social-link.snapchat:hover::before {
+    background: linear-gradient(135deg, #FFFC00, #FFE600);
+}
+
+.social-link.snapchat:hover .social-icon,
+.social-link.snapchat:hover .social-name {
+    color: #000000;
+}
+
+.social-link.email:hover::before {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+}
+
+/* Staggered Animation */
+.social-link {
+    opacity: 0;
+    animation: popIn 0.5s ease forwards;
+}
+
+.social-link:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.social-link:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.social-link:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.social-link:nth-child(4) {
+    animation-delay: 0.5s;
+}
+
+.social-link:nth-child(5) {
+    animation-delay: 0.6s;
+}
+
+.social-link:nth-child(6) {
+    animation-delay: 0.7s;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ========================================
+   Footer
+======================================== */
+.footer {
+    padding-top: 30px;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* ========================================
+   Responsive Design
+======================================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 50px 20px;
+    }
+
+    .profile-image-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+
+    .name {
+        font-size: 2.5rem;
+    }
+
+    .about-text {
+        font-size: 1.1rem;
+    }
+
+    .social-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .social-link {
+        padding: 20px 12px;
+    }
+
+    .social-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+    }
+
+    .lang-toggle {
+        top: 20px;
+        left: 20px;
+        padding: 12px 18px;
+        font-size: 13px;
+    }
+
+    [dir="ltr"] .lang-toggle {
+        left: auto;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 40px 15px;
+    }
+
+    .profile-image-wrapper {
+        width: 130px;
+        height: 130px;
+    }
+
+    .name {
+        font-size: 2rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+
+    .social-section {
+        gap: 10px;
+    }
+
+    .social-link {
+        padding: 18px 10px;
+        gap: 10px;
+    }
+
+    .social-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+        border-radius: 12px;
+    }
+
+    .social-name {
+        font-size: 0.85rem;
+    }
+}
+
+/* ========================================
+   Accessibility
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.social-link:focus-visible,
+.lang-toggle:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 4px;
+}
