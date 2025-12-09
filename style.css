@@ -283,8 +283,8 @@ body {
     }
 
     100% {
-        width: 250%;
-        height: 250%;
+        width: 160%;
+        height: 160%;
         opacity: 0;
         border-width: 0px;
     }
